@@ -975,3 +975,21 @@ function Test-PodeWebPage
 
     return (@($pages) | Measure-Object).Count -gt 0
 }
+
+
+function Remove-PodeWebPage{
+    param (
+        [Parameter(Mandatory=$true)]
+        [string]
+        $Name
+    )
+
+    $routePath = (Get-PodeWebPagePath -Name $Name -NoAppPath)
+    $pages = Get-PodeWebState -Name 'pages'
+    #$pages[$routePath] = $pageMeta
+    $pages[$routePath] = $Null
+    
+}
+
+
+
